@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<style>
+ td {
+	border: 1px solid black;
+	padding: 2px 4px;
+ }
+ td {
+	line-height: 1;
+ }
+</style>
+<body>
+</body>
+<script>
+	var table = document.createElement('table');
+	var tr = document.createElement('tr');
+	var td;
+	var tmpHeader = '';
+
+    var columNum = 50; // количество столбцов в таблице
+	
+	// преобразуем текст заголовков
+    function transformHeader(headerText) {
+        var tmpHeader = '';
+        for (var d=0; d < headerText.length; d++) {
+            tmpHeader += headerText[d] + '<br/>';
+        }
+        return tmpHeader;
+	}
+	
+	var body = document.getElementsByTagName('body')[0];
+	
+	// создаем таблицу
+    table.appendChild(tr);
+	for (var i=0; i<columNum; i++) {
+		td = document.createElement('td');
+		td.textContent = 'Header number ' + i;
+		tr.appendChild(td);
+	}
+	body.appendChild(table);
+	
+	// меняем заголовки
+    var headers = document.getElementsByTagName('td');
+	for (var k=0; k < headers.length; k++) {
+		headers[k].innerHTML = transformHeader(headers[k].textContent);
+	}
+	
+</script>
+</html>
